@@ -9,41 +9,49 @@ function formatCurrency(cents) {
     style: "currency",
     currency: "INR",
     maximumFractionDigits: 2,
-  }).format(cents / 100);
+  }).format((cents || 0) / 100);
 }
 
-export default function ExpenseList({ expenses }) {
+function categoryVariant(category) {
+  const c = (category || "").toLowerCase();
+  if (c.includes("food") || c.includes("groc")) return "success";
+  if (c.includes("travel") || c.includes("transport")) return "primary";
+  if (c.includes("bill") || c.includes("rent")) return "warning";
+  if (c.includes("health")) return "danger";
+  return "secondary";
+}
+
+export default function ExpenseList({ expenses = [] }) {
   const [isPending, startTransition] = useTransition();
 
   if (!expenses.length) {
     return (
-      <div className="text-center text-secondary py-5">
-        <div className="fw-semibold">No expenses yet</div>
-        <div className="small">Add your first expense from the form.</div>
+      <div className="text-center text-secondary py-5 px-3">
+        <div className="fw-bold fs-5">No expenses yet</div>
+        <div className="small">Add one from the form to see it here.</div>
       </div>
     );
   }
 
   return (
-    <ListGroup className="rounded-4 overflow-hidden">
+    <ListGroup variant="flush">
       {expenses.map((e) => (
         <ListGroup.Item
           key={e.id}
-          className="d-flex align-items-start justify-content-between gap-3 py-3"
+          className="py-3 px-3 px-lg-4 d-flex align-items-start justify-content-between gap-3"
         >
           <div className="min-w-0">
             <div className="d-flex align-items-center gap-2 flex-wrap">
               <span className="fw-semibold text-truncate">{e.category}</span>
-              <Badge bg="light" text="dark" className="border rounded-pill">
+
+              <Badge bg={"secondary"} className="pill">
                 {formatCurrency(e.amountCents)}
               </Badge>
+
+           
             </div>
 
-            {e.description ? (
-              <div className="text-secondary small mt-1 text-truncate">
-                {e.description}
-              </div>
-            ) : null}
+        
           </div>
 
           <Button

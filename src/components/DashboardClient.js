@@ -8,40 +8,74 @@ function formatCurrency(cents) {
   return new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "INR",
-  }).format(cents / 100);
+    maximumFractionDigits: 2,
+  }).format((cents || 0) / 100);
 }
 
-export default function DashboardClient({ expenses, totalCents }) {
+export default function DashboardClient({ expenses = [], totalCents = 0 }) {
   return (
-    <Container className="py-4">
+    <Container className="py-4 py-lg-5">
+      <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+        <div>
+          <div className="d-flex align-items-center gap-2">
+            <span className="fs-3 fw-bold brand-gradient">Expense Tracker</span>
+          </div>
+          <div className="text-secondary mt-1">
+            Add, view, and delete expenses instantly.
+          </div>
+        </div>
+
+        <div className="d-flex gap-3 flex-wrap">
+          {/* <Badge bg="primary" className="pill px-4 py-3 fs-6 fw-semibold">
+            Items&nbsp;
+            <span className="fw-bold fs-5 ms-1">{expenses.length}</span>
+          </Badge> */}
+
+          <Badge bg="success" className="pill px-4 py-3 fs-6 fw-semibold">
+           <b>Total :</b>  &nbsp;
+            <span className="fw-bold fs-5 ms-1">
+              {formatCurrency(totalCents)}
+            </span>
+          </Badge>
+        </div>
+      </div>
+
       <Row className="g-4">
         <Col lg={5}>
-          <Card className="shadow-sm border-0 rounded-4">
-            <Card.Body className="p-4">
-              <div className="d-flex align-items-start justify-content-between">
-                <h1 className="h4 mb-2">Expense Tracker</h1>
-                <Badge bg="dark" className="rounded-pill px-3 py-2">
-                  MongoDB
-                </Badge>
+          <Card className="soft-card rounded-4 border-0 overflow-hidden">
+            <div className="p-3 p-lg-4 bg-primary bg-gradient text-white">
+              <div className="d-flex align-items-center justify-content-between">
+                <div className="fw-semibold">Add Expense</div>
+                {/* <Badge bg="light" text="dark" className="pill">
+                  Quick entry
+                </Badge> */}
               </div>
+              {/* <div className="small opacity-75 mt-1">
+                Use clear categories like Food, Travel, Bills.
+              </div> */}
+            </div>
 
-              <Card className="bg-light border-0 rounded-4 mb-4">
-                <Card.Body>
-                  <div className="text-secondary small">Total Expenses</div>
-                  <div className="display-6 fw-semibold">
-                    {formatCurrency(totalCents)}
-                  </div>
-                </Card.Body>
-              </Card>
-
+            <Card.Body className="p-3 p-lg-4">
               <AddExpenseForm />
             </Card.Body>
           </Card>
         </Col>
 
         <Col lg={7}>
-          <Card className="shadow-sm border-0 rounded-4">
-            <Card.Body className="p-4">
+          <Card className="soft-card rounded-4 border-0 overflow-hidden">
+            <div className="p-3 p-lg-4 bg-dark bg-gradient text-white">
+              <div className="d-flex align-items-center justify-content-between">
+                <div className="fw-semibold">Recent Expenses</div>
+                {/* <Badge bg="light" text="dark" className="pill">
+                  newest first
+                </Badge> */}
+              </div>
+              {/* <div className="small opacity-75 mt-1">
+                Click delete to remove an item.
+              </div> */}
+            </div>
+
+            <Card.Body className="p-0">
               <ExpenseList expenses={expenses} />
             </Card.Body>
           </Card>

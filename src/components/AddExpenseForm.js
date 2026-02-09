@@ -27,7 +27,7 @@ export default function AddExpenseForm() {
       {error ? <Alert variant="danger" className="mb-0">{error}</Alert> : null}
 
       <Form.Group>
-        <Form.Label className="small text-secondary">Category</Form.Label>
+        <Form.Label className="small text-secondary">Name</Form.Label>
         <Form.Control
           name="category"
           placeholder="e.g., Groceries"
@@ -45,7 +45,7 @@ export default function AddExpenseForm() {
             type="number"
             step="0.01"
             min="0.01"
-            placeholder="e.g., 50"
+            placeholder="e.g. 50"
             className="rounded-end-3"
             required
           />
@@ -53,14 +53,7 @@ export default function AddExpenseForm() {
         <div className="form-text">Must be greater than 0.</div>
       </Form.Group>
 
-      <Form.Group>
-        <Form.Label className="small text-secondary">Description (optional)</Form.Label>
-        <Form.Control
-          name="description"
-          placeholder="e.g., Vegetables & fruits"
-          className="rounded-3"
-        />
-      </Form.Group>
+     
 
       <Button
         type="submit"

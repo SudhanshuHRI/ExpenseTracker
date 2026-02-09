@@ -6,3 +6,32 @@
 }
 
 
+:root {
+  --soft-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.app-bg {
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 500px at 10% 0%, rgba(13,110,253,0.18), transparent 55%),
+    radial-gradient(800px 500px at 90% 10%, rgba(214,51,132,0.18), transparent 55%),
+    radial-gradient(700px 450px at 50% 90%, rgba(25,135,84,0.14), transparent 60%),
+    #f8f9fa;
+}
+
+.brand-gradient {
+  background: linear-gradient(90deg, #0d6efd, #d63384);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.soft-card {
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: var(--soft-shadow);
+}
+
+.pill {
+  border-radius: 999px !important;
+}
