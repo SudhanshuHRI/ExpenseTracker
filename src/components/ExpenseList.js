@@ -12,14 +12,7 @@ function formatCurrency(cents) {
   }).format((cents || 0) / 100);
 }
 
-function categoryVariant(category) {
-  const c = (category || "").toLowerCase();
-  if (c.includes("food") || c.includes("groc")) return "success";
-  if (c.includes("travel") || c.includes("transport")) return "primary";
-  if (c.includes("bill") || c.includes("rent")) return "warning";
-  if (c.includes("health")) return "danger";
-  return "secondary";
-}
+
 
 export default function ExpenseList({ expenses = [] }) {
   const [isPending, startTransition] = useTransition();

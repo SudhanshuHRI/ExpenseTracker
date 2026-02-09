@@ -30,7 +30,7 @@ export default function AddExpenseForm() {
         <Form.Label className="small text-secondary">Name</Form.Label>
         <Form.Control
           name="category"
-          placeholder="e.g., Groceries"
+          placeholder="E.g. Groceries"
           className="rounded-3"
           required
         />
@@ -45,7 +45,7 @@ export default function AddExpenseForm() {
             type="number"
             step="0.01"
             min="0.01"
-            placeholder="e.g. 50"
+            placeholder="E.g. 50"
             className="rounded-end-3"
             required
           />

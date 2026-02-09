@@ -26,10 +26,7 @@ export default function DashboardClient({ expenses = [], totalCents = 0 }) {
         </div>
 
         <div className="d-flex gap-3 flex-wrap">
-          {/* <Badge bg="primary" className="pill px-4 py-3 fs-6 fw-semibold">
-            Items&nbsp;
-            <span className="fw-bold fs-5 ms-1">{expenses.length}</span>
-          </Badge> */}
+         
 
           <Badge bg="success" className="pill px-4 py-3 fs-6 fw-semibold">
            <b>Total :</b>  &nbsp;
@@ -46,13 +43,9 @@ export default function DashboardClient({ expenses = [], totalCents = 0 }) {
             <div className="p-3 p-lg-4 bg-primary bg-gradient text-white">
               <div className="d-flex align-items-center justify-content-between">
                 <div className="fw-semibold">Add Expense</div>
-                {/* <Badge bg="light" text="dark" className="pill">
-                  Quick entry
-                </Badge> */}
+             
               </div>
-              {/* <div className="small opacity-75 mt-1">
-                Use clear categories like Food, Travel, Bills.
-              </div> */}
+           
             </div>
 
             <Card.Body className="p-3 p-lg-4">
@@ -66,13 +59,9 @@ export default function DashboardClient({ expenses = [], totalCents = 0 }) {
             <div className="p-3 p-lg-4 bg-dark bg-gradient text-white">
               <div className="d-flex align-items-center justify-content-between">
                 <div className="fw-semibold">Recent Expenses</div>
-                {/* <Badge bg="light" text="dark" className="pill">
-                  newest first
-                </Badge> */}
+              
               </div>
-              {/* <div className="small opacity-75 mt-1">
-                Click delete to remove an item.
-              </div> */}
+            
             </div>
 
             <Card.Body className="p-0">
